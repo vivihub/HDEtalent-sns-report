@@ -49,29 +49,29 @@ th:first-child, td:first-child { text-align: left; }
 
 <template id="tpl">
 <div class="controls">
-  <select id="selTalent"><option value="__ALL__">全タレント</option></select>
-  <div class="chips" id="pfChips"></div>
+<select id="selTalent"><option value="__ALL__">全タレント</option></select>
+<div class="chips" id="pfChips"></div>
 </div>
 <div class="cards" id="cards"></div>
 <div class="section">
-  <h2>フォロワー数 推移</h2>
-  <div class="chart-box"><canvas id="chart"></canvas></div>
-  <div class="note">タレント未選択時は各タレントの全SNS合計。選択時はプラットフォーム別。</div>
+<h2>フォロワー数 推移</h2>
+<div class="chart-box"><canvas id="chart"></canvas></div>
+<div class="note">タレント未選択時は各タレントの全SNS合計。選択時はプラットフォーム別。</div>
 </div>
 <div class="section">
-  <h2 id="tblTitle">最新スナップショット(前日比)</h2>
-  <div class="tbl-wrap"><table id="tbl"></table></div>
+<h2 id="tblTitle">最新スナップショット(前日比)</h2>
+<div class="tbl-wrap"><table id="tbl"></table></div>
 </div>
 <div class="section">
-  <h2>新規投稿フィード</h2>
-  <div id="posts"></div>
+<h2>新規投稿フィード</h2>
+<div id="posts"></div>
 </div>
 </template>
 
 <script>
 // ===== DATA (自動生成: 毎朝の収集タスクがここを最新に置き換える) =====
 const GENERATED_AT = "2026-07-22";
-const DATA = [{"d": "2026-07-22", "t": "水瀬紗彩耶", "p": "YouTube", "f": 45300, "pc": 188, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "水瀬紗彩耶", "p": "X", "f": 27100, "pc": 3108, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "宮本廉也", "p": "TikTok", "f": 540200, "pc": null, "lk": 19000000, "np": null, "npc": null}, {"d": "2026-07-22", "t": "宮本廉也", "p": "Threads", "f": 1206, "pc": null, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "SUMOMO", "p": "YouTube", "f": 2890, "pc": 619, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "宮本廉也", "p": "Instagram", "f": 57000, "pc": 646, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "まお", "p": "TikTok", "f": 164800, "pc": null, "lk": 3900000, "np": null, "npc": null}, {"d": "2026-07-22", "t": "花山瑞貴", "p": "YouTube", "f": 224000, "pc": 317, "lk": null, "np": "・【LOOKBOOK】夏服着回し10コーデ(18時間前・1.5万回視聴)", "npc": null}, {"d": "2026-07-22", "t": "水瀬紗彩耶", "p": "Threads", "f": 46000, "pc": null, "lk": null, "np": "・来世は日常アニメの世界でいきます(19時間前)\n・流行りのやつ撮ってみました🧸(21時間前)\n・どの髪型が好き？(1日前)", "npc": 3}, {"d": "2026-07-22", "t": "小西詠斗", "p": "TikTok", "f": 246700, "pc": null, "lk": 3900000, "np": null, "npc": null}, {"d": "2026-07-22", "t": "のぼりもえ", "p": "X", "f": 4221, "pc": 1683, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "七瀬恋彩", "p": "Threads", "f": 140000, "pc": null, "lk": null, "np": "・フライング稽古後にみんなで練習会✨(1日前)\n・みんなはどんな時に回るの？？ #PR(6日前)", "npc": null}, {"d": "2026-07-22", "t": "水瀬紗彩耶", "p": "Instagram", "f": 319000, "pc": 765, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "七瀬恋彩", "p": "TikTok", "f": 1500000, "pc": null, "lk": 19400000, "np": null, "npc": null}, {"d": "2026-07-22", "t": "のぼりもえ", "p": "Threads", "f": 20000, "pc": null, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "湯上響花", "p": "TikTok", "f": 80200, "pc": null, "lk": 2000000, "np": null, "npc": null}, {"d": "2026-07-22", "t": "SUMOMO", "p": "TikTok", "f": 3284, "pc": null, "lk": 204400, "np": null, "npc": null}, {"d": "2026-07-22", "t": "皆藤空良", "p": "X", "f": 1553, "pc": 1587, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "坂田秀晃", "p": "TikTok", "f": 332, "pc": null, "lk": 16000, "np": null, "npc": null}, {"d": "2026-07-22", "t": "湯上響花", "p": "Instagram", "f": 43000, "pc": 1032, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "花山瑞貴", "p": "TikTok", "f": 113000, "pc": null, "lk": 861500, "np": null, "npc": null}, {"d": "2026-07-22", "t": "湯上響花", "p": "YouTube", "f": 29900, "pc": 105, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "中本大賀", "p": "X", "f": 27600, "pc": 2810, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "湯上響花", "p": "Threads", "f": 5695, "pc": null, "lk": null, "np": "・ゆうみさんと薔薇スイーツ堪能した(4日前)\n・FP3級に合格しました(7/14)", "npc": null}, {"d": "2026-07-22", "t": "景井ひな", "p": "Threads", "f": 55000, "pc": null, "lk": null, "np": "・★🍪 Cookie make up 🍪★(7/4)", "npc": null}, {"d": "2026-07-22", "t": "まお", "p": "X", "f": 78100, "pc": 22100, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "のぼりもえ", "p": "YouTube", "f": 24900, "pc": 231, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "景井ひな", "p": "Instagram", "f": 273000, "pc": 725, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "七瀬恋彩", "p": "Instagram", "f": 716000, "pc": 776, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "皆藤空良", "p": "Instagram", "f": 6512, "pc": 347, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "湯上響花", "p": "X", "f": 39100, "pc": 25000, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "SUMOMO", "p": "Instagram", "f": 21000, "pc": 741, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "皆藤空良", "p": "TikTok", "f": 23300, "pc": null, "lk": 753800, "np": null, "npc": null}, {"d": "2026-07-22", "t": "のぼりもえ", "p": "TikTok", "f": 27600, "pc": null, "lk": 596800, "np": null, "npc": null}, {"d": "2026-07-22", "t": "花山瑞貴", "p": "Instagram", "f": 297000, "pc": 884, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "花山瑞貴", "p": "Threads", "f": 36000, "pc": null, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "SUMOMO", "p": "X", "f": 2189, "pc": 6000, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "景井ひな", "p": "TikTok", "f": 10200000, "pc": null, "lk": 304000000, "np": null, "npc": null}, {"d": "2026-07-22", "t": "せきぐちりさ", "p": "Threads", "f": 120000, "pc": null, "lk": null, "np": "・めざましテレビ #イマドキ 出演告知(2日前)\n・表参道カフェ紹介 #PR(2日前)", "npc": null}, {"d": "2026-07-22", "t": "小西詠斗", "p": "X", "f": 102700, "pc": 14200, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "永田聖一朗", "p": "Instagram", "f": 58000, "pc": 287, "lk": null, "np": "・投稿1件(7/20)", "npc": null}, {"d": "2026-07-22", "t": "中本大賀", "p": "Instagram", "f": 29000, "pc": 264, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "まお", "p": "Instagram", "f": 27000, "pc": 256, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "せきぐちりさ", "p": "Instagram", "f": 426000, "pc": 899, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "宮本廉也", "p": "X", "f": 805, "pc": 4136, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "SUMOMO", "p": "Threads", "f": 1129, "pc": null, "lk": null, "np": "・dior関連投稿(1日前)", "npc": null}, {"d": "2026-07-22", "t": "水瀬紗彩耶", "p": "TikTok", "f": 947100, "pc": null, "lk": 33600000, "np": null, "npc": null}, {"d": "2026-07-22", "t": "せきぐちりさ", "p": "TikTok", "f": 135900, "pc": null, "lk": 1500000, "np": null, "npc": null}, {"d": "2026-07-22", "t": "小西詠斗", "p": "Instagram", "f": 220000, "pc": 480, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "永田聖一朗", "p": "X", "f": 78100, "pc": 3755, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "まお", "p": "YouTube", "f": 288000, "pc": 1350, "lk": null, "np": "・ライブ配信アーカイブ(2週間前・1.4万回視聴)", "npc": null}, {"d": "2026-07-22", "t": "中本大賀", "p": "TikTok", "f": 10300, "pc": null, "lk": 299400, "np": null, "npc": null}, {"d": "2026-07-22", "t": "せきぐちりさ", "p": "X", "f": 33100, "pc": 3949, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "七瀬恋彩", "p": "X", "f": 23600, "pc": 8138, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "永田聖一朗", "p": "TikTok", "f": 18900, "pc": null, "lk": 193300, "np": null, "npc": null}, {"d": "2026-07-22", "t": "小西詠斗", "p": "YouTube", "f": 58500, "pc": 62, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "のぼりもえ", "p": "Instagram", "f": 147000, "pc": 981, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "坂田秀晃", "p": "Instagram", "f": 3124, "pc": 191, "lk": null, "np": null, "npc": null}, {"d": "2026-07-22", "t": "景井ひな", "p": "X", "f": 115700, "pc": 3659, "lk": null, "np": null, "npc": null}];
+const DATA = [{"d":"2026-07-22","t":"水瀬紗彩耶","p":"YouTube","f":45300,"pc":188,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"水瀬紗彩耶","p":"X","f":27100,"pc":3108,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"宮本廉也","p":"TikTok","f":540200,"pc":null,"lk":19000000,"np":null,"npc":null},{"d":"2026-07-22","t":"宮本廉也","p":"Threads","f":1206,"pc":null,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"SUMOMO","p":"YouTube","f":2890,"pc":619,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"宮本廉也","p":"Instagram","f":57000,"pc":646,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"まお","p":"TikTok","f":164800,"pc":null,"lk":3900000,"np":null,"npc":null},{"d":"2026-07-22","t":"花山瑞貴","p":"YouTube","f":224000,"pc":317,"lk":null,"np":"・【LOOKBOOK】夏服着回し10コーデ(18時間前・1.5万回視聴)","npc":null},{"d":"2026-07-22","t":"水瀬紗彩耶","p":"Threads","f":46000,"pc":null,"lk":null,"np":"・来世は日常アニメの世界でいきます(19時間前)\n・流行りのやつ撮ってみました🧸(21時間前)\n・どの髪型が好き？(1日前)","npc":3},{"d":"2026-07-22","t":"小西詠斗","p":"TikTok","f":246700,"pc":null,"lk":3900000,"np":null,"npc":null},{"d":"2026-07-22","t":"のぼりもえ","p":"X","f":4221,"pc":1683,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"七瀬恋彩","p":"Threads","f":140000,"pc":null,"lk":null,"np":"・フライング稽古後にみんなで練習会✨(1日前)\n・みんなはどんな時に回るの？？ #PR(6日前)","npc":null},{"d":"2026-07-22","t":"水瀬紗彩耶","p":"Instagram","f":319000,"pc":765,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"七瀬恋彩","p":"TikTok","f":1500000,"pc":null,"lk":19400000,"np":null,"npc":null},{"d":"2026-07-22","t":"のぼりもえ","p":"Threads","f":20000,"pc":null,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"湯上響花","p":"TikTok","f":80200,"pc":null,"lk":2000000,"np":null,"npc":null},{"d":"2026-07-22","t":"SUMOMO","p":"TikTok","f":3284,"pc":null,"lk":204400,"np":null,"npc":null},{"d":"2026-07-22","t":"皆藤空良","p":"X","f":1553,"pc":1587,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"坂田秀晃","p":"TikTok","f":332,"pc":null,"lk":16000,"np":null,"npc":null},{"d":"2026-07-22","t":"湯上響花","p":"Instagram","f":43000,"pc":1032,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"花山瑞貴","p":"TikTok","f":113000,"pc":null,"lk":861500,"np":null,"npc":null},{"d":"2026-07-22","t":"湯上響花","p":"YouTube","f":29900,"pc":105,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"中本大賀","p":"X","f":27600,"pc":2810,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"湯上響花","p":"Threads","f":5695,"pc":null,"lk":null,"np":"・ゆうみさんと薔薇スイーツ堪能した(4日前)\n・FP3級に合格しました(7/14)","npc":null},{"d":"2026-07-22","t":"景井ひな","p":"Threads","f":55000,"pc":null,"lk":null,"np":"・★🍪 Cookie make up 🍪★(7/4)","npc":null},{"d":"2026-07-22","t":"まお","p":"X","f":78100,"pc":22100,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"のぼりもえ","p":"YouTube","f":24900,"pc":231,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"景井ひな","p":"Instagram","f":273000,"pc":725,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"七瀬恋彩","p":"Instagram","f":716000,"pc":776,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"皆藤空良","p":"Instagram","f":6512,"pc":347,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"湯上響花","p":"X","f":39100,"pc":25000,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"SUMOMO","p":"Instagram","f":21000,"pc":741,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"皆藤空良","p":"TikTok","f":23300,"pc":null,"lk":753800,"np":null,"npc":null},{"d":"2026-07-22","t":"のぼりもえ","p":"TikTok","f":27600,"pc":null,"lk":596800,"np":null,"npc":null},{"d":"2026-07-22","t":"花山瑞貴","p":"Instagram","f":297000,"pc":884,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"花山瑞貴","p":"Threads","f":36000,"pc":null,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"SUMOMO","p":"X","f":2189,"pc":6000,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"景井ひな","p":"TikTok","f":10200000,"pc":null,"lk":304000000,"np":null,"npc":null},{"d":"2026-07-22","t":"せきぐちりさ","p":"Threads","f":120000,"pc":null,"lk":null,"np":"・めざましテレビ #イマドキ 出演告知(2日前)\n・表参道カフェ紹介 #PR(2日前)","npc":null},{"d":"2026-07-22","t":"小西詠斗","p":"X","f":102700,"pc":14200,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"永田聖一朗","p":"Instagram","f":58000,"pc":287,"lk":null,"np":"・投稿1件(7/20)","npc":null},{"d":"2026-07-22","t":"中本大賀","p":"Instagram","f":29000,"pc":264,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"まお","p":"Instagram","f":27000,"pc":256,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"せきぐちりさ","p":"Instagram","f":426000,"pc":899,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"宮本廉也","p":"X","f":805,"pc":4136,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"SUMOMO","p":"Threads","f":1129,"pc":null,"lk":null,"np":"・dior関連投稿(1日前)","npc":null},{"d":"2026-07-22","t":"水瀬紗彩耶","p":"TikTok","f":947100,"pc":null,"lk":33600000,"np":null,"npc":null},{"d":"2026-07-22","t":"せきぐちりさ","p":"TikTok","f":135900,"pc":null,"lk":1500000,"np":null,"npc":null},{"d":"2026-07-22","t":"小西詠斗","p":"Instagram","f":220000,"pc":480,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"永田聖一朗","p":"X","f":78100,"pc":3755,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"まお","p":"YouTube","f":288000,"pc":1350,"lk":null,"np":"・ライブ配信アーカイブ(2週間前・1.4万回視聴)","npc":null},{"d":"2026-07-22","t":"中本大賀","p":"TikTok","f":10300,"pc":null,"lk":299400,"np":null,"npc":null},{"d":"2026-07-22","t":"せきぐちりさ","p":"X","f":33100,"pc":3949,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"七瀬恋彩","p":"X","f":23600,"pc":8138,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"永田聖一朗","p":"TikTok","f":18900,"pc":null,"lk":193300,"np":null,"npc":null},{"d":"2026-07-22","t":"小西詠斗","p":"YouTube","f":58500,"pc":62,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"のぼりもえ","p":"Instagram","f":147000,"pc":981,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"坂田秀晃","p":"Instagram","f":3124,"pc":191,"lk":null,"np":null,"npc":null},{"d":"2026-07-22","t":"景井ひな","p":"X","f":115700,"pc":3659,"lk":null,"np":null,"npc":null}];
 // ================================================================
 const PLATFORMS = ["X","Instagram","TikTok","YouTube","Threads"];
 const fmt = n => n == null ? "–" : n >= 1e8 ? (n/1e8).toFixed(2)+"億" : n >= 1e4 ? (n/1e4).toFixed(n>=1e6?0:1)+"万" : n.toLocaleString();
@@ -80,113 +80,113 @@ let rows = DATA.filter(x => x.d && x.t && x.p), chart = null;
 const state = { talent: "__ALL__", pfs: [...PLATFORMS] };
 
 function latestDates() {
-  const ds = [...new Set(rows.map(r => r.d))].sort();
-  return { latest: ds[ds.length-1], prev: ds[ds.length-2] || null, all: ds };
+const ds = [...new Set(rows.map(r => r.d))].sort();
+return { latest: ds[ds.length-1], prev: ds[ds.length-2] || null, all: ds };
 }
 
 function render() {
-  const app = document.getElementById("app");
-  app.innerHTML = "";
-  app.appendChild(document.getElementById("tpl").content.cloneNode(true));
-  const { latest, all } = latestDates();
-  document.getElementById("sub").textContent = `レポート生成日: ${GENERATED_AT} ｜ 最終データ日: ${latest || "なし"} ｜ 記録日数: ${all.length}日 ｜ レコード: ${rows.length}件`;
-  const talents = [...new Set(rows.map(r => r.t))];
-  const sel = document.getElementById("selTalent");
-  talents.forEach(t => { const o = document.createElement("option"); o.value = t; o.textContent = t; sel.appendChild(o); });
-  sel.value = state.talent;
-  sel.onchange = () => { state.talent = sel.value; draw(); };
-  const chips = document.getElementById("pfChips");
-  PLATFORMS.forEach(p => {
-    const c = document.createElement("div");
-    c.className = "chip" + (state.pfs.includes(p) ? " on" : "");
-    c.textContent = p;
-    c.onclick = () => {
-      state.pfs = state.pfs.includes(p) ? state.pfs.filter(x => x !== p) : [...state.pfs, p];
-      if (!state.pfs.length) state.pfs = [p];
-      c.classList.toggle("on"); draw();
-    };
-    chips.appendChild(c);
-  });
-  draw();
+const app = document.getElementById("app");
+app.innerHTML = "";
+app.appendChild(document.getElementById("tpl").content.cloneNode(true));
+const { latest, all } = latestDates();
+document.getElementById("sub").textContent = `レポート生成日: ${GENERATED_AT} ｜ 最終データ日: ${latest || "なし"} ｜ 記録日数: ${all.length}日 ｜ レコード: ${rows.length}件`;
+const talents = [...new Set(rows.map(r => r.t))];
+const sel = document.getElementById("selTalent");
+talents.forEach(t => { const o = document.createElement("option"); o.value = t; o.textContent = t; sel.appendChild(o); });
+sel.value = state.talent;
+sel.onchange = () => { state.talent = sel.value; draw(); };
+const chips = document.getElementById("pfChips");
+PLATFORMS.forEach(p => {
+const c = document.createElement("div");
+c.className = "chip" + (state.pfs.includes(p) ? " on" : "");
+c.textContent = p;
+c.onclick = () => {
+state.pfs = state.pfs.includes(p) ? state.pfs.filter(x => x !== p) : [...state.pfs, p];
+if (!state.pfs.length) state.pfs = [p];
+c.classList.toggle("on"); draw();
+};
+chips.appendChild(c);
+});
+draw();
 }
 
 function filtered() {
-  return rows.filter(r => (state.talent === "__ALL__" || r.t === state.talent) && state.pfs.includes(r.p));
+return rows.filter(r => (state.talent === "__ALL__" || r.t === state.talent) && state.pfs.includes(r.p));
 }
 
 function draw() {
-  const { latest, prev } = latestDates();
-  const fr = filtered();
-  const latestRows = fr.filter(r => r.d === latest);
-  const prevMap = {};
-  fr.filter(r => r.d === prev).forEach(r => prevMap[r.t+"|"+r.p] = r);
+const { latest, prev } = latestDates();
+const fr = filtered();
+const latestRows = fr.filter(r => r.d === latest);
+const prevMap = {};
+fr.filter(r => r.d === prev).forEach(r => prevMap[r.t+"|"+r.p] = r);
 
-  const cards = document.getElementById("cards");
-  cards.innerHTML = "";
-  const totF = latestRows.reduce((s,r) => s + (r.f||0), 0);
-  const totPrev = prev ? latestRows.reduce((s,r) => { const pv = prevMap[r.t+"|"+r.p]; return s + (pv && pv.f != null ? pv.f : (r.f||0)); }, 0) : null;
-  const totNew = latestRows.reduce((s,r) => s + (r.npc||0), 0);
-  const mk = (lbl,val,dlt) => {
-    const d = document.createElement("div"); d.className = "card";
-    d.innerHTML = `<div class="lbl">${lbl}</div><div class="val">${val}</div>` + (dlt!==undefined?`<div class="dlt ${dlt>0?"up":dlt<0?"down":"flat"}">${dlt==null?"前日データなし":dfmt(dlt)+" (前日比)"}</div>`:"");
-    cards.appendChild(d);
-  };
-  mk("合計フォロワー数", fmt(totF), totPrev != null ? totF - totPrev : null);
-  mk("対象アカウント数", latestRows.length);
-  mk("本日の新規投稿数", totNew);
-  const best = latestRows.map(r => ({...r, dl: prevMap[r.t+"|"+r.p] ? (r.f||0)-(prevMap[r.t+"|"+r.p].f||0) : 0})).sort((a,b)=>b.dl-a.dl)[0];
-  if (best && best.dl > 0) mk("最大増加", `${best.t} ${best.p}`, best.dl);
+const cards = document.getElementById("cards");
+cards.innerHTML = "";
+const totF = latestRows.reduce((s,r) => s + (r.f||0), 0);
+const totPrev = prev ? latestRows.reduce((s,r) => { const pv = prevMap[r.t+"|"+r.p]; return s + (pv && pv.f != null ? pv.f : (r.f||0)); }, 0) : null;
+const totNew = latestRows.reduce((s,r) => s + (r.npc||0), 0);
+const mk = (lbl,val,dlt) => {
+const d = document.createElement("div"); d.className = "card";
+d.innerHTML = `<div class="lbl">${lbl}</div><div class="val">${val}</div>` + (dlt!==undefined?`<div class="dlt ${dlt>0?"up":dlt<0?"down":"flat"}">${dlt==null?"前日データなし":dfmt(dlt)+" (前日比)"}</div>`:"");
+cards.appendChild(d);
+};
+mk("合計フォロワー数", fmt(totF), totPrev != null ? totF - totPrev : null);
+mk("対象アカウント数", latestRows.length);
+mk("本日の新規投稿数", totNew);
+const best = latestRows.map(r => ({...r, dl: prevMap[r.t+"|"+r.p] ? (r.f||0)-(prevMap[r.t+"|"+r.p].f||0) : 0})).sort((a,b)=>b.dl-a.dl)[0];
+if (best && best.dl > 0) mk("最大増加", `${best.t} ${best.p}`, best.dl);
 
-  const dates = [...new Set(fr.map(r => r.d))].sort();
-  let datasets = [];
-  const colors = ["#2456d6","#d4363e","#0a8a3c","#e08a00","#7b3fd4","#0aa0a8","#c1275f","#556","#8a6d3b","#333"];
-  if (state.talent === "__ALL__") {
-    const ts = [...new Set(fr.map(r => r.t))];
-    datasets = ts.map((t,i) => ({
-      label: t,
-      data: dates.map(d => { const rs = fr.filter(r => r.t===t && r.d===d); return rs.length ? rs.reduce((s,r)=>s+(r.f||0),0) : null; }),
-      borderColor: colors[i%colors.length], backgroundColor: colors[i%colors.length],
-      tension: .2, spanGaps: true, pointRadius: 3
-    }));
-  } else {
-    datasets = state.pfs.map((p,i) => ({
-      label: p,
-      data: dates.map(d => { const r = fr.find(x => x.t===state.talent && x.p===p && x.d===d); return r ? r.f : null; }),
-      borderColor: colors[i%colors.length], backgroundColor: colors[i%colors.length],
-      tension: .2, spanGaps: true, pointRadius: 3
-    }));
-  }
-  if (chart) chart.destroy();
-  chart = new Chart(document.getElementById("chart"), {
-    type: "line",
-    data: { labels: dates, datasets },
-    options: { responsive: true, maintainAspectRatio: false,
-      scales: { y: { ticks: { callback: v => fmt(v) } } },
-      plugins: { legend: { position: "bottom", labels: { boxWidth: 10, font: { size: 11 } } } } }
-  });
+const dates = [...new Set(fr.map(r => r.d))].sort();
+let datasets = [];
+const colors = ["#2456d6","#d4363e","#0a8a3c","#e08a00","#7b3fd4","#0aa0a8","#c1275f","#556","#8a6d3b","#333"];
+if (state.talent === "__ALL__") {
+const ts = [...new Set(fr.map(r => r.t))];
+datasets = ts.map((t,i) => ({
+label: t,
+data: dates.map(d => { const rs = fr.filter(r => r.t===t && r.d===d); return rs.length ? rs.reduce((s,r)=>s+(r.f||0),0) : null; }),
+borderColor: colors[i%colors.length], backgroundColor: colors[i%colors.length],
+tension: .2, spanGaps: true, pointRadius: 3
+}));
+} else {
+datasets = state.pfs.map((p,i) => ({
+label: p,
+data: dates.map(d => { const r = fr.find(x => x.t===state.talent && x.p===p && x.d===d); return r ? r.f : null; }),
+borderColor: colors[i%colors.length], backgroundColor: colors[i%colors.length],
+tension: .2, spanGaps: true, pointRadius: 3
+}));
+}
+if (chart) chart.destroy();
+chart = new Chart(document.getElementById("chart"), {
+type: "line",
+data: { labels: dates, datasets },
+options: { responsive: true, maintainAspectRatio: false,
+scales: { y: { ticks: { callback: v => fmt(v) } } },
+plugins: { legend: { position: "bottom", labels: { boxWidth: 10, font: { size: 11 } } } } }
+});
 
-  const tbl = document.getElementById("tbl");
-  document.getElementById("tblTitle").textContent = `最新スナップショット ${latest || ""}(前日比)`;
-  const rowsHtml = latestRows
-    .sort((a,b) => a.t.localeCompare(b.t,"ja") || PLATFORMS.indexOf(a.p)-PLATFORMS.indexOf(b.p))
-    .map(r => {
-      const pv = prevMap[r.t+"|"+r.p];
-      const dl = pv && pv.f != null && r.f != null ? r.f - pv.f : null;
-      const dpc = pv && pv.pc != null && r.pc != null ? r.pc - pv.pc : null;
-      return `<tr><td>${r.t}</td><td><span class="pf pf-${r.p}">${r.p}</span></td>
-      <td>${r.f != null ? r.f.toLocaleString() : "–"}</td>
-      <td class="${dl>0?"up":dl<0?"down":"flat"}">${dl==null?"–":dfmt(dl)}</td>
-      <td>${r.pc != null ? r.pc.toLocaleString() : "–"}</td>
-      <td class="${dpc>0?"up":"flat"}">${dpc==null?"–":dfmt(dpc)}</td>
-      <td>${r.npc != null ? r.npc : "–"}</td></tr>`;
-    }).join("");
-  tbl.innerHTML = `<thead><tr><th>タレント</th><th>SNS</th><th>フォロワー</th><th>前日比</th><th>投稿累計</th><th>前日比</th><th>新規投稿</th></tr></thead><tbody>${rowsHtml}</tbody>`;
+const tbl = document.getElementById("tbl");
+document.getElementById("tblTitle").textContent = `最新スナップショット ${latest || ""}(前日比)`;
+const rowsHtml = latestRows
+.sort((a,b) => a.t.localeCompare(b.t,"ja") || PLATFORMS.indexOf(a.p)-PLATFORMS.indexOf(b.p))
+.map(r => {
+const pv = prevMap[r.t+"|"+r.p];
+const dl = pv && pv.f != null && r.f != null ? r.f - pv.f : null;
+const dpc = pv && pv.pc != null && r.pc != null ? r.pc - pv.pc : null;
+return `<tr><td>${r.t}</td><td><span class="pf pf-${r.p}">${r.p}</span></td>
+<td>${r.f != null ? r.f.toLocaleString() : "–"}</td>
+<td class="${dl>0?"up":dl<0?"down":"flat"}">${dl==null?"–":dfmt(dl)}</td>
+<td>${r.pc != null ? r.pc.toLocaleString() : "–"}</td>
+<td class="${dpc>0?"up":"flat"}">${dpc==null?"–":dfmt(dpc)}</td>
+<td>${r.npc != null ? r.npc : "–"}</td></tr>`;
+}).join("");
+tbl.innerHTML = `<thead><tr><th>タレント</th><th>SNS</th><th>フォロワー</th><th>前日比</th><th>投稿累計</th><th>前日比</th><th>新規投稿</th></tr></thead><tbody>${rowsHtml}</tbody>`;
 
-  const postsDiv = document.getElementById("posts");
-  const withPosts = fr.filter(r => r.np && r.np.trim()).sort((a,b) => b.d.localeCompare(a.d)).slice(0, 40);
-  postsDiv.innerHTML = withPosts.length
-    ? withPosts.map(r => `<div class="post"><div class="meta">${r.d} ｜ <b>${r.t}</b> <span class="pf pf-${r.p}">${r.p}</span></div><div class="body">${r.np.replace(/</g,"&lt;")}</div></div>`).join("")
-    : `<div class="note">表示できる新規投稿がありません。</div>`;
+const postsDiv = document.getElementById("posts");
+const withPosts = fr.filter(r => r.np && r.np.trim()).sort((a,b) => b.d.localeCompare(a.d)).slice(0, 40);
+postsDiv.innerHTML = withPosts.length
+? withPosts.map(r => `<div class="post"><div class="meta">${r.d} ｜ <b>${r.t}</b> <span class="pf pf-${r.p}">${r.p}</span></div><div class="body">${r.np.replace(/</g,"&lt;")}</div></div>`).join("")
+: `<div class="note">表示できる新規投稿がありません。</div>`;
 }
 render();
 </script>
